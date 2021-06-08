@@ -1,0 +1,33 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+
+\begin{document}
+
+Sea $A \in \mathbb R^{3x3}$ la matriz cuadrada dada por
+\begin{equation*}
+    A = 
+    \begin{pmatrix}
+        3 & -3 & 2\\
+        -4 & 4 & -4\\
+        -3 & 3 & -2
+    \end{pmatrix}
+\end{equation*}
+
+\subsection{Obténgase cuatro matrices $B \in \mathbb R^{3x3}$ tales que $B^{2} = A$ .
+Sugerencia: diagonalizar A puede ser de utilidad. Para el proceso de diagonalización,
+puedes hacer uso de \texttt{numpy.linalg.eig} en Python.}
+
+Este apartado se encuentra resuelto paso a paso en el notebook anexo debido a que se implementa haciendo uso de código Python.
+
+\subsection{¿Crees que las matrices se podrían haber obtenido por tanteo, empleando la fuerza bruta,
+con un coste computacional similar? ¿Qué nos dice esto, en términos de optimización,
+acerca de utilizar en determinadas ocasiones estrategias matemáticas en la resolución
+computacional de problemas?}
+
+Con un coste computacional similar, nunca. Hacerlo a través de la fuerza bruta nos obligaría a probar iterando números para cada posición en la matriz, para realizar una búsqueda aleatoria en una matriz $ \mathbb N x \mathbb N $ en un espacio de números enteros entre 0 y 100 deberíamos iterar $ 100^{ \mathbb N x \mathbb N} $ veces.\\
+
+Esto nos hace pensar que el uso de estrategias matemáticas en la resolución de problemas computacionales en la mayoría de las oportunidades nos permitirá optimizar los algoritmos que utilicemos bajo reglas y condiciones que acotan el problema y lo hacen más sencillo de solucionar.
+
+\bigskip
+
+\end{document}

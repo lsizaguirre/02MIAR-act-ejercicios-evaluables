@@ -1,0 +1,132 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+
+\begin{document}
+
+Demuéstrese o refútese razonadamente la equivalencia entre los pares de enunciados siguientes:
+
+\subsection{Primer par de enunciados}
+\begin{itemize}
+    \item $\neg \exists x : \neg(\neg p(x)\lor \neg q(x))$, al que llamaremos primer enunciado
+    \item $[\forall x, \neg p(x)] \lor [\forall x, \neg q(x)]$, al que llamaremos segundo enunciado
+\end{itemize}
+
+\bigskip
+\textbf{Solución:}
+
+\begin{enumerate}
+    \item Para demostrar o refutar su equivalencia partiremos aplicando al primer enunciado la siguiente ley de Morgan:
+    \begin{equation*}
+        \forall x,  p(x) \equiv \neg [\exists x : \neg p(x)]
+    \end{equation*}
+    
+    \item De esta forma aplicando la ley descrita en el paso anterior sobre el primer enunciado $\neg \exists x : \neg(\neg p(x)\lor \neg q(x))$, podríamos también escribirlo así:
+    \begin{equation*}
+        \forall x : \neg p(x) \lor \neg q(x)
+    \end{equation*}
+
+    \item Además sabemos que existe una propiedad de la equivalencia que nos dice: 
+    \begin{equation*}
+        [\forall x, p(x)] \lor [\forall x, q(x)] \models \forall x : [p(x) \lor q(x)]
+    \end{equation*}
+    
+    \item Tomando esto último en consideración podríamos aplicarlo al primer enunciado y quedaría demostrado que: 
+    \begin{equation*}
+        [\forall x, \neg p(x)] \lor [\forall x, \neg q(x)] \models \forall x : [\neg p(x) \lor \neg q(x)]
+    \end{equation*}
+
+    \item Por esto último podemos concluir que el primer enunciado implica al segundo, pero no en sentido contrario, por lo tanto, \textbf{NO son equivalentes}, el primer enunciado implica el segundo pero el segundo no implica el primero.
+\end{enumerate}
+
+%------------------------------------------------
+
+\subsection{Segundo par de enunciados}
+\begin{itemize}
+    \item $\neg ( \forall x, \exists y: [ (p(x,y) \land q(x,y)) \implies r(x,y) ] )$, al que llamaremos primer enunciado
+    \item $\exists x : [(\forall y, p(x,y)) \land (\forall y, q(x,y)) \land (\forall y, \neg r(x,y))]$, al que llamaremos segundo enunciado
+\end{itemize}
+
+\bigskip
+\textbf{Solución:}
+
+\begin{enumerate}
+    \item Analizando inicialmente ambos enunciados decido partir por el segundo, intentando resolver primero la parte interna del mismo. A esta parte la llamaremos AUX, de esta forma podríamos reescribir el segundo enunciado como:
+    \begin{equation*}
+        \exists x : AUX,
+    \end{equation*}
+    donde AUX = $[(\forall y, p(x,y)) \land (\forall y, q(x,y)) \land (\forall y, \neg r(x,y))]$
+    
+    \item Ahora nos concentraremos en simplificar AUX y para ello aplicaremos la siguiente propiedad:
+    \begin{equation*}
+        [\forall x, p(x)] \land [\forall x, q(x)] \equiv \forall x : [p(x) \land q(x)]
+    \end{equation*}
+
+    \item Aplicando lo anterior sobre AUX = $[(\forall y, p(x,y)) \land (\forall y, q(x,y)) \land (\forall y, \neg r(x,y))]$, AUX nos quedaría de la siguiente forma: 
+    \begin{equation*}
+        \forall y, [p(x,y)) \land q(x,y) \land \neg r(x,y)]
+    \end{equation*}
+    
+    \item Además sabemos que existe una ley de Morgan que nos dice:
+    \begin{equation*}
+        \forall x,  p(x) \equiv \neg [\exists x : \neg p(x)]
+    \end{equation*}
+    
+    \item Si aplicamos esta ley sobre AUX, tendríamos que AUX sería igual a: 
+    \begin{equation*}
+        \neg \exists y, \neg [p(x,y)) \land q(x,y) \land \neg r(x,y)]
+    \end{equation*}
+    
+    \item También sabemos que:
+    \begin{equation*}
+        a \land (b \land c) \equiv (a \land b) \land c
+    \end{equation*}
+    y que 
+    \begin{equation*}
+        \neg (a \land b) \equiv \neg a \lor \neg b
+    \end{equation*}
+    
+    \item Si consideramos:
+    \begin{equation*}
+        a = p(x,y)) \land q(x,y),
+    \end{equation*}
+    \begin{equation*}
+        b= \neg r(x,y)
+    \end{equation*}
+    
+    \item Podríamos perfectamente reescribir AUX como: 
+    \begin{equation*}
+        \neg \exists y, [\neg (p(x,y)) \land q(x,y)) \lor \neg(\neg r(x,y))]
+    \end{equation*}
+    o lo que es lo mismo:
+    \begin{equation*}
+        \neg \exists y, [\neg (p(x,y)) \land q(x,y)) \lor r(x,y)]
+    \end{equation*}
+    
+    \item Para finalizar con la manipulación de AUX, también recordemos que $\neg p \lor q \equiv p \implies q$, y aplicando esto sobre AUX quedaría de la siguiente forma:
+    \begin{equation*}
+        \neg \exists y, [(p(x,y)) \land q(x,y)) \implies r(x,y)]
+    \end{equation*}
+    
+    \item Ahora podemos sustituir AUX en su original, es decir, en el segundo enunciado:
+    \begin{equation*}
+        \exists x : AUX,
+    \end{equation*}
+    \begin{equation*}
+        \exists x : \neg \exists y, [(p(x,y)) \land q(x,y)) \implies r(x,y)]
+    \end{equation*}
+    
+    \item Para finalizar, aplicaremos sobre el cuantificador existencial de x la siguiente ley:
+    \begin{equation*}
+        \exists x : p(x) \equiv \neg[\forall x, \neg p(x)]
+    \end{equation*}
+    
+    \item Quedando el segundo enunciado reescrito de la siguiente forma:
+    \begin{equation*}
+        \neg ( \forall x, \exists y: [ (p(x,y) \land q(x,y)) \implies r(x,y) ] )
+    \end{equation*}
+    
+    \item lo que es igual al primer enunciado, por lo tanto estos dos enunciados \textbf{SON EQUIVALENTES}
+    
+\end{enumerate}
+
+\end{document}
